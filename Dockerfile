@@ -5,6 +5,6 @@ ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 RUN GOOS=$TARGETOS GOARCH=$TARGETARCH make build
 
-FROM gcr.io/distroless/static-debian10
+FROM debian:10-slim
 COPY --from=builder /go/src/github.com/transferwise/oomie/bin/oomie /oomie
 ENTRYPOINT ["/oomie"]
